@@ -1,3 +1,4 @@
+
 name: CI Pipeline
 
 on:
@@ -12,6 +13,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Build Spring Boot with Maven
+        run: |
+          cd springboot/app
+          mvn clean package -DskipTests
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
